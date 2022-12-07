@@ -1,0 +1,21 @@
+body{margin:0;
+     padding:0;
+     }
+     textarea{width:100vw;
+     height:100vh;
+     background-color:black;
+     color:lightgreen;
+     font-family:"DotGothic16";
+     font-size:25px;
+     border:none;
+     border-radius:0px;
+     outline:none;
+     }
+     .count{position:fixed;
+         position:absolute;
+         right:5px;
+         bottom:5px;
+         color:white;
+         font-size:18px;
+        font-family:"DotGothic16";
+     }
