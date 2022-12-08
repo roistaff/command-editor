@@ -1,6 +1,6 @@
 # command-editor
 This is Command editor. Write commands,and get your results.
-Plese use FREEEEE! (I know nothing when your computer has wrong.)
+Plese use FREEEEE! (I know nothing if your computer has wrong.)
 
 !--JAPANESE--!
 # コマンドエディタ
