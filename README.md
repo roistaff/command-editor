@@ -14,7 +14,6 @@ Plese use FREEEEE! (I know nothing if your computer has wrong.)
 /input();
 /welcome();
 /fortune();
-/search();
 /down(html);
 /down(txt);
 etc.
