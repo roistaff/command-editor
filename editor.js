@@ -1,4 +1,4 @@
-function keyDown(event){
+    function keyDown(event){
          let push_key = event.key;
          let target = document.getElementById('hoge');
          let anext = target.value.substr(0, target.selectionStart);
@@ -9,15 +9,20 @@ function keyDown(event){
          if (push_key == 'Enter'){
                     let str = target.value;
              if (anext.indexOf('/kill();') != -1){alert('KILL!');
-                 target.value = '';}else if(anext.indexOf('/copy();') != -1){
+                 target.value = '';
+                 }else if(anext.indexOf('/copy();') != -1){
                     target.value = str.replace('/copy();', ''); 
-                 target.select();
+                 navigator.clipboard.writeText(target.value).then(() => {
+                 console.log("ok");
+                }, () => {
+                    target.select();
                  document.execCommand("copy");
                  target.blur();
+                });
                  }else if(anext.indexOf('/paste();') != -1){
                     target.value = str.replace('/paste();', '');
-                     target.focus();
-                     document.execCommand("paste");
+                  navigator.clipboard.readText().then(
+                    (clipText) => target.value = target.value.substr(0, target.selectionStart) + clipText +  target.value.substr(target.selectionStart));
                  }else if (anext.indexOf('/print();') != -1){
                     window.print();
                     target.value = str.replace('/print();', '');
@@ -66,7 +71,7 @@ function keyDown(event){
                         target.setSelectionRange(place, placedown);}
                  }else if(anext.indexOf('/welcome();') != -1){
                     target.value = str.replace('/welcome();', '');
-                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /close(); \n /down(html); \n /down(txt); \n This screen keeps 6 secounds.';
+                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /cl/fortune(); \n /down(html); \n /down(txt); \n This screen keeps 6 secounds.';
                     window.setTimeout(function(){target.value = "Let's start!!";}, 6000);
                  }else if(anext.indexOf('/close();') != -1){
                      window.close();
