@@ -71,7 +71,7 @@
                         target.setSelectionRange(place, placedown);}
                  }else if(anext.indexOf('/welcome();') != -1){
                     target.value = str.replace('/welcome();', '');
-                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /cl/fortune(); \n /down(html); \n /down(txt); \n This screen keeps 6 secounds.';
+                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n This screen keeps 6 secounds.';
                     window.setTimeout(function(){target.value = "Let's start!!";}, 6000);
                  }else if(anext.indexOf('/close();') != -1){
                      window.close();
