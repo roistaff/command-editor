@@ -8,8 +8,9 @@
         let lines = target.value.split(/\r*\n/).length;
          if (push_key == 'Enter'){
                     let str = target.value;
-             if (anext.indexOf('/kill();') != -1){alert('KILL!');
-                 target.value = '';
+             if (anext.indexOf('/kill();') != -1){
+                 const really =confirm('REALLY KILL?');
+                 if(really == true){target.value = "";}
                  }else if(anext.indexOf('/copy();') != -1){
                     target.value = str.replace('/copy();', ''); 
                  navigator.clipboard.writeText(target.value).then(() => {
@@ -44,7 +45,8 @@
                     const blob = new Blob([html], { type: "html/plain" }); 
                     const a = document.createElement("a"); 
                     a.href = URL.createObjectURL(blob); 
-                    a.download = "index.html";
+                    const file_name = prompt('file name');
+                    a.download = file_name+".html";
                     a.click();
                  }else if(anext.indexOf('/down(txt);') != -1){
                     target.value = str.replace('/down(txt);', '');
@@ -52,7 +54,8 @@
                     const blob = new Blob([txt], { type: "txt/plain" }); 
                     const a = document.createElement("a"); 
                     a.href = URL.createObjectURL(blob); 
-                    a.download = "index.txt";
+                    const file_name = prompt('file name');
+                    a.download = file_name+".txt";
                     a.click();
                  }else if(anext.indexOf('/day();') != -1){
                     let z = new Date();
@@ -61,7 +64,11 @@
                     let day = z.getDate();
                     let time = year+'/'+month+'/'+day;
                     target.value = str.replace('/day();',time);
-                 }else if(anext.indexOf('/fortune();') != -1){
+                 }else if(anext.indexOf('/setfont();') != -1){
+                    const size =prompt('font size');
+                    target.value = str.replace('/setfont();', '');
+                    target.style.fontSize = size+'px';
+                 } else if(anext.indexOf('/fortune();') != -1){
                      target.value = target.value.substr(0, target.selectionStart) +'    ==> Your lucky number is ' + lucky +  target.value.substr(target.selectionStart);
                  }else if(anext.indexOf('/search();') != -1){
                         const pos = target.selectionStart;
@@ -69,15 +76,14 @@
                         stext =stext.toLowerCase();
                         let str = target.value.toLowerCase();
                         const place = str.indexOf(stext,pos);
-                        if(place == -1){
-                            alert('NO FOUND');
-                        }else{
+                        if(place != -1){
                         const placedown = place + stext.length;
                         target.focus();
-                        target.setSelectionRange(place, placedown);}
+                        target.setSelectionRange(place, placedown);
+                        }else{
+                            alert('NO FOUND');}
                  }else if(anext.indexOf('/welcome();') != -1){
-                    target.value = str.replace('/welcome();', '');
-                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /day(); \n /lines(); \n This screen keeps 6 secounds.';
+                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /day(); \n /lines(); \n /setfont(); \n This screen keeps 6 secounds.';
                     window.setTimeout(function(){target.value = "Let's start!!";}, 6000);
                  }else if(anext.indexOf('/lines();') != -1){
                     alert(lines);
@@ -89,3 +95,18 @@
          }
          let textarea = document.getElementById('hoge');
          textarea.addEventListener('keydown', keyDown);
+             function start(){
+                 let target = document.getElementById('hoge');
+                 target.readOnly = true;
+                 target.value ="Loading...";
+                window.setTimeout(function(){let d = new Date();
+                    target.value =target.value+'\n'+d.toString();}, 1500);
+                window.setTimeout(function(){target.value =target.value+'\n User information:'+navigator.userAgent;}, 2000);
+                window.setTimeout(function(){target.value =target.value+'\n User device information: width:'+screen.width+', height:'+screen.height;}, 3000);
+                window.setTimeout(function(){target.value =target.value+'\n Github : https://github.com/roistaff/command-editor';}, 3500);
+                window.setTimeout(function(){target.readOnly = false;
+                    target.value ='';
+                    target.focus();
+                }, 6000);
+             };
+　　　　　　　window.onload = start;
