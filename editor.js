@@ -5,7 +5,7 @@
          let lucky = Math.floor(Math.random() *15) + 1;
          let len = document.getElementById("hoge").value.length;
            document.getElementById("count").innerText = len ;
-        const dialog = document.getElementById('dg1');
+        let lines = target.value.split(/\r*\n/).length;
          if (push_key == 'Enter'){
                     let str = target.value;
              if (anext.indexOf('/kill();') != -1){alert('KILL!');
@@ -17,7 +17,6 @@
                 }, () => {
                     target.select();
                  document.execCommand("copy");
-                 target.blur();
                 });
                  }else if(anext.indexOf('/paste();') != -1){
                     target.value = str.replace('/paste();', '');
@@ -37,7 +36,7 @@
                     target.value = str.replace('/input();', '');
                     target.value = target.value.substr(0, target.selectionStart) +'! No found storage. !'+  target.value.substr(target.selectionStart);
                     window.setTimeout(function(){
-                    target.value = str.replace('! No found storage. !', '');}, 3000);
+                    target.value = str.replace('! No found storage. !', '');}, 2000);
                      }else{target.value = inputcode ;}
                  }else if(anext.indexOf('/down(html);') != -1){
                     target.value = str.replace('/down(html);', '');
@@ -55,6 +54,13 @@
                     a.href = URL.createObjectURL(blob); 
                     a.download = "index.txt";
                     a.click();
+                 }else if(anext.indexOf('/day();') != -1){
+                    let z = new Date();
+                    let year  = z.getFullYear();
+                    let month =z.getMonth()+1;
+                    let day = z.getDate();
+                    let time = year+'/'+month+'/'+day;
+                    target.value = str.replace('/day();',time);
                  }else if(anext.indexOf('/fortune();') != -1){
                      target.value = target.value.substr(0, target.selectionStart) +'    ==> Your lucky number is ' + lucky +  target.value.substr(target.selectionStart);
                  }else if(anext.indexOf('/search();') != -1){
@@ -71,11 +77,14 @@
                         target.setSelectionRange(place, placedown);}
                  }else if(anext.indexOf('/welcome();') != -1){
                     target.value = str.replace('/welcome();', '');
-                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n This screen keeps 6 secounds.';
+                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /day(); \n /lines(); \n This screen keeps 6 secounds.';
                     window.setTimeout(function(){target.value = "Let's start!!";}, 6000);
-                 }else if(anext.indexOf('/close();') != -1){
-                     window.close();
+                 }else if(anext.indexOf('/lines();') != -1){
+                    alert(lines);
                  }
+         }else if(push_key == 'Tab'){
+             event.preventDefault();
+             target.value = target.value.substr(0, target.selectionStart) +'\t'+  target.value.substr(target.selectionStart);
          } 
          }
          let textarea = document.getElementById('hoge');
