@@ -1,3 +1,6 @@
+        let swi = 1;
+        let target = document.getElementById('hoge');
+        let str = target.value;
     function keyDown(event){
          let push_key = event.key;
          let target = document.getElementById('hoge');
@@ -8,11 +11,11 @@
         let lines = target.value.split(/\r*\n/).length;
          if (push_key == 'Enter'){
                     let str = target.value;
-             if (anext.indexOf('/kill();') != -1){
+             if(anext.indexOf('/kill();') != -1){
                  const really =confirm('REALLY KILL?');
                  if(really == true){target.value = "";}
                  }else if(anext.indexOf('/copy();') != -1){
-                    target.value = str.replace('/copy();', ''); 
+                    target.value = str.replace('/copy();', '');
                  navigator.clipboard.writeText(target.value).then(() => {
                  console.log("ok");
                 }, () => {
@@ -23,17 +26,17 @@
                     target.value = str.replace('/paste();', '');
                   navigator.clipboard.readText().then(
                     (clipText) => target.value = target.value.substr(0, target.selectionStart) + clipText +  target.value.substr(target.selectionStart));
-                 }else if (anext.indexOf('/print();') != -1){
+                 }else if(anext.indexOf('/print();') != -1){
                     target.value = str.replace('/print();', '');
                     window.print();
                  }else if(anext.indexOf('/save();') != -1){
                     let code = str.replace('/save();', '');
                      localStorage.setItem('myCode', code);
                      target.value = str.replace('/save();', '');
-                 }else if (anext.indexOf('/input();') != -1){
+                 }else if(anext.indexOf('/input();') != -1){
                      let inputcode = localStorage.getItem('myCode');
                      target.value = inputcode ;
-                     if (inputcode == null ){
+                     if(inputcode == null ){
                     target.value = str.replace('/input();', '');
                     target.value = target.value.substr(0, target.selectionStart) +'! No found storage. !'+  target.value.substr(target.selectionStart);
                     window.setTimeout(function(){
@@ -68,9 +71,10 @@
                     const size =prompt('font size');
                     target.value = str.replace('/setfont();', '');
                     target.style.fontSize = size+'px';
-                 } else if(anext.indexOf('/fortune();') != -1){
+                 }else if(anext.indexOf('/fortune();') != -1){
                      target.value = target.value.substr(0, target.selectionStart) +'    ==> Your lucky number is ' + lucky +  target.value.substr(target.selectionStart);
                  }else if(anext.indexOf('/search();') != -1){
+                     　　event.preventDefault();
                         const pos = target.selectionStart;
                         let stext = prompt('search text');
                         stext =stext.toLowerCase();
@@ -84,12 +88,16 @@
                             alert('NO FOUND');}
                  }else if(anext.indexOf('/welcome();') != -1){
                      target.readOnly = true;
-                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /day(); \n /lines(); \n /setfont(); \n This screen keeps 6 secounds.';
+                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /day(); \n /line(); \n /setfont(); \n This screen keeps 6 secounds.';
                     window.setTimeout(function(){target.value = "Let's start!!";
                         target.readOnly = false;
                     }, 6000);
-                 }else if(anext.indexOf('/lines();') != -1){
-                    alert(lines);
+                 }else if(anext.indexOf('/game();') != -1){
+                     target.value = str.replace('/game();', '');
+                     game();
+                 }else if(anext.indexOf('/line();') != -1){
+                     target.value = str.replace('/line();', '');
+                     line();
                  }
          }else if(push_key == 'Tab'){
              event.preventDefault();
@@ -98,8 +106,38 @@
          }
          let textarea = document.getElementById('hoge');
          textarea.addEventListener('keydown', keyDown);
+         function game(){
+            let target = document.getElementById('hoge');
+             let str = target.value;
+             str = '';
+             line();
+             line('War Games');
+             line('Hey!');
+         }
+         function line(linetxt){
+            let area = target.clientWidth;
+            const po = Math.trunc(area / 25 * 2 - 2);
+            let line1 = '-';
+            let linese =line1.repeat(po);
+            if(linetxt == undefined){
+                linetxt ='';
+            };
+            target.value = target.value.substr(0, target.selectionStart)+linetxt+'\n'+linese+  target.value.substr(target.selectionStart);
+         }
+          function brink(txt){
+             let suck = '_';
+             const uck = suck.repeat(txt.length);
+             if(swi == 1){
+                 return;
+             }else{
+            window.setInterval(function(){
+            target.value = str.replace(txt,uck);
+            window.setTimeout(function(){
+            target.value = str.replace(uck,txt);
+            }, 500);
+                            }, 1000);};
+                    }
              function start(){
-                 let target = document.getElementById('hoge');
                  target.readOnly = true;
                  target.value ="Loading...";
                 window.setTimeout(function(){let d = new Date();
