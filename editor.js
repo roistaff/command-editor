@@ -24,8 +24,8 @@
                   navigator.clipboard.readText().then(
                     (clipText) => target.value = target.value.substr(0, target.selectionStart) + clipText +  target.value.substr(target.selectionStart));
                  }else if (anext.indexOf('/print();') != -1){
-                    window.print();
                     target.value = str.replace('/print();', '');
+                    window.print();
                  }else if(anext.indexOf('/save();') != -1){
                     let code = str.replace('/save();', '');
                      localStorage.setItem('myCode', code);
