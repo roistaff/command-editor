@@ -31,6 +31,7 @@
                     target.value = str.replace('/print();', '');
                     window.print();
                  }else if(anext.indexOf('/save();') != -1){
+                      event.preventDefault();
                     let code = str.replace('/save();', '');
                      localStorage.setItem('myCode', code);
                      target.value = str.replace('/save();', '');
@@ -73,6 +74,7 @@
                     target.value = str.replace('/setfont();', '');
                     target.style.fontSize = size+'px';
                  }else if(anext.indexOf('/fortune();') != -1){
+                     target.value = str.replace('/fortune();', '');
                      target.value = target.value.substr(0, target.selectionStart) +'    ==> Your lucky number is ' + lucky +  target.value.substr(target.selectionStart);
                  }else if(anext.indexOf('/search();') != -1){
                      　　event.preventDefault();
@@ -93,6 +95,8 @@
                     window.setTimeout(function(){target.value = "Let's start!!";
                         target.readOnly = false;
                     }, 6000);
+                 }else if(anext.indexOf('/github();') != -1){
+                         window.open('https://github.com/roistaff/command-editor');
                  }else if(anext.indexOf('/game();') != -1){
                      target.value = str.replace('/game();', '');
                      game();
