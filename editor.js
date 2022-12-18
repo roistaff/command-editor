@@ -12,6 +12,7 @@
          if (push_key == 'Enter'){
                     let str = target.value;
              if(anext.indexOf('/kill();') != -1){
+                 event.preventDefault();
                  const really =confirm('REALLY KILL?');
                  if(really == true){target.value = "";}
                  }else if(anext.indexOf('/copy();') != -1){
