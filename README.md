@@ -20,6 +20,6 @@ Plese use FREEEEE! (I know nothing if your computer has wrong.)
 /kill();  
   etc.
 
-Plese visit website:
- [EXSAMPLE](https://roistaff.github.io/command-editor/)
-[BLOG](https://roistaff.github.io/myblog.github.io/)
+Plese visit website:  
+[EXSAMPLE](https://roistaff.github.io/command-editor/)  
+[BLOG](https://roistaff.github.io/myblog.github.io/)  
