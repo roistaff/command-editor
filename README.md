@@ -6,18 +6,20 @@ Plese use FREEEEE! (I know nothing if your computer has wrong.)
 # コマンドエディタ
 これはコマンドで動くテキストエディタ？です。実用性はあまりありませんが、JavaScriptで書いた内容をコマンドで保存したりすることができます。レトロ感満載なので、是非とも使ってみたください。コードはフリーですが、あなたのパソコンが壊れて翌日弁護士を呼ぼうとしたって、私は責任を取りませんので。（もちろん変なプログラムではありませんのでご安心を）
 
-# commands
-/copy(); 
-/paste();
-/print();
-/save(); 
-/input();
-/welcome();
-/fortune();
-/down(html);
-/down(txt);
-etc.
+# commands  
+/copy();  
+/paste();  
+/print();  
+/save();  
+/input();  
+/welcome();  
+/fortune();  
+/down(html);  
+/down(txt);  
+/line();  
+/kill();  
+  etc.
 
 Plese visit website:
-https://roistaff.github.io/command-editor/
-https://roistaff.github.io/myblog.github.io/
+ [EXSAMPLE](https://roistaff.github.io/command-editor/)
+[BLOG](https://roistaff.github.io/myblog.github.io/)
