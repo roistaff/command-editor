@@ -10,6 +10,7 @@ body{margin:0;
      border:none;
      border-radius:0px;
      outline:none;
+     caret-color:lightgreen;
      }
      .count{position:fixed;
          position:absolute;
