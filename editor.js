@@ -1,7 +1,14 @@
         let swi = 1;
         let target = document.getElementById('hoge');
         let str = target.value;
+        
     function keyDown(event){
+          if(event.ctrlKey) {
+              if(event.key == 'f'){
+                  event.preventDefault();
+                  alert('NICE');
+              }
+          };
          let push_key = event.key;
          let target = document.getElementById('hoge');
          let anext = target.value.substr(0, target.selectionStart);
@@ -107,10 +114,10 @@
          }else if(push_key == 'Tab'){
              event.preventDefault();
              target.value = target.value.substr(0, target.selectionStart) +'\t'+  target.value.substr(target.selectionStart);
-         } 
+         }else if(push_key == ''){} 
          }
          let textarea = document.getElementById('hoge');
-         textarea.addEventListener('keydown', keyDown);
+         textarea.addEventListener('keydown', keyDown,false);
          function game(){
             let target = document.getElementById('hoge');
              let str = target.value;
