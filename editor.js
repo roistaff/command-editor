@@ -21,7 +21,8 @@
              if(anext.indexOf('/kill();') != -1){
                  event.preventDefault();
                  const really =confirm('REALLY KILL?');
-                 if(really == true){target.value = "";}
+                 if(really == true){target.value = "";
+                start();}
                  }else if(anext.indexOf('/copy();') != -1){
                     target.value = str.replace('/copy();', '');
                  navigator.clipboard.writeText(target.value).then(() => {
