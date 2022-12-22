@@ -1,4 +1,4 @@
-        let swi = 1;
+                let swi = 1;
         let target = document.getElementById('hoge');
         let str = target.value;
         
@@ -69,6 +69,16 @@
                     const file_name = prompt('file name');
                     a.download = file_name+".txt";
                     a.click();
+                 }else if(anext.indexOf('/file();') != -1){
+                        let input = document.getElementById('inputFile');
+                        input.click();
+                         input.addEventListener('change', function() {
+                        let file = new FileReader();
+                        file.onload = () => {
+                       target.value = file.result;
+                          }
+                      file.readAsText(this.files[0]);
+                         });
                  }else if(anext.indexOf('/day();') != -1){
                     let z = new Date();
                     let year  = z.getFullYear();
