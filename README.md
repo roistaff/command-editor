@@ -18,6 +18,7 @@ Plese use FREEEEE! (I know nothing if your computer has wrong.)
 /down(txt);  
 /line();  
 /kill();  
+/file();
   etc.
 
 Plese visit website:  

@@ -108,7 +108,7 @@
                             alert('NO FOUND');}
                  }else if(anext.indexOf('/welcome();') != -1){
                      target.readOnly = true;
-                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /day(); \n /line(); \n /setfont(); \n This screen keeps 6 secounds.';
+                    target.value ='Hello,World! \n Welcome to Command Editor.Plese write Commands,and get your results.\n Commands \n /kill(); \n /copy(); \n /paste(); \n /print(); \n /save(); \n /input(); \n /fortune(); \n /down(html); \n /down(txt); \n /file(); \n /day(); \n /line(); \n /setfont(); \n This screen keeps 6 secounds.';
                     window.setTimeout(function(){target.value = "Let's start!!";
                         target.readOnly = false;
                     }, 6000);
